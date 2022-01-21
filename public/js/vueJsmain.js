@@ -14,6 +14,7 @@ var essai2 = new Vue({
 
 });
 
+// 50% de chances que se soit true ou false 
 var trueFalse = Math.random() < 0.5
 
 var essai3 = new Vue({
@@ -68,5 +69,12 @@ var essai6 = new Vue({
 		parentAsso: "parentAsso",
 		items: arrayNormal,
 		items2: arrayAssociatif
+	},
+	methods : {
+		addInArray : function(){
+			var newItem = prompt('new item ?');
+			this.items.push(newItem);
+			this.items2.push({key: newItem});
+		}
 	}
 });
