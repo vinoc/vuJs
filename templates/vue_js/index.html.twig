@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VueJsController!
+{% endblock %}
+
+{% block body %}
+	<main id="vueJs">
+
+		<div id="essai1">
+			<p>afficher le message suivant:
+			</p>
+			{% verbatim %}
+				{{ message }}
+			{% endverbatim %}
+		</div>
+
+		<div id="essai2">
+			<span v-bind:title="message">Modifier le message title via vueJs
+			</span>
+		</div>
+
+		<div id="essai3">
+			<p>if</p>
+			<p v-if="isTrue">On me voit</p>
+			<p v-else>On ne me voit plus</p>
+		</div>
+
+		<div id="essai4" class="flexRow">
+			<p>foreach</p>
+			<ul>
+				{# Pour un tableau associatif, on utiliser la clef du tableau (ici nommé ingénieusement key) #}
+				<li v-for="item in items" :key="item.key">
+					{% verbatim %}
+						{{ item.key}}
+					{% endverbatim %}
+				</li>
+			</ul>
+
+			{# Pour un tableau standard, on appel juste le tableau #}
+			<ul>
+				<li v-for="item in items2">
+					{% verbatim %}
+						{{ item}}
+					{% endverbatim %}
+				</li>
+			</ul>
+		</div>
+
+		<div id="essai5">
+			<p>Action sur bouton</p>
+			<p>
+
+				{% verbatim %}
+					{{ text }}
+				{% endverbatim %}
+			</p>
+			<button v-on:click="promptt">Cliquez moi en 1er</button>
+			<button v-on:click="reverse">Cliquez moi en 2eme</button>
+			<input type="text" v-model="text">
+		</div>
+
+		<div id="essai6">
+			<p>For</p>
+			<div class="flexRow">
+				<div v-for="(item, index) in items">
+					{% verbatim %}
+
+						{{ parentNormal }}
+						-
+						{{ index }}
+						-
+						{{ item }}
+					{% endverbatim %}
+
+
+				</div>
+                <div v-for="(item, index) in items2">
+                    {% verbatim %}
+
+                        {{ parentAsso }}
+                        -
+                        {{ index }}
+                        -
+                        {{ item.key }}
+                    {% endverbatim %}
+                </div>
+			</div>
+		</div>
+
+
+	</main>
+
+	<script src="{{ asset('js/vueJsmain.js') }}"></script>
+
+{% endblock %}
